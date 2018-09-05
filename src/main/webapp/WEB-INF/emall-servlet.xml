@@ -12,6 +12,9 @@
 
     <!-- 该文件将包含您所有的Spring Web MVC特定组件（bean） -->
 
+    <!--<mvc:annotation-driven />-->
+    <!--<context:annotation-config />-->
+
     <context:component-scan base-package="top.kwseeker.emall" annotation-config="true"/>
 
     <!-- 配置InternalResourceViewResolver -->

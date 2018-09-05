@@ -12,6 +12,8 @@
     <!-- <context:annotation-config/> 的功能和 context:component-scan是一样的 -->
     <context:component-scan base-package="top.kwseeker.emall" annotation-config="true"/>
 
+    <!--<bean class="top.kwseeker.emall.config.SwaggerConfig"/>-->
+
     <!-- 引入其他配置文件 -->
     <import resource="applicationContext-datasource.xml"/>
 </beans>

@@ -31,7 +31,8 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>emall</servlet-name>
-    <url-pattern>*.do</url-pattern>
+    <!--<url-pattern>*.do</url-pattern>-->   <!-- 使用swagger这里一定不能这么写，否则找不到静态资源 swagger-ui.html -->
+    <url-pattern>/</url-pattern>
   </servlet-mapping>
   <!--引入映射xml文件 end-->
 </web-app>
