@@ -1,7 +1,37 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         id="WebApp_ID" version="2.5">
 
-<web-app>
+  <!-- 更多配置元素参考： https://docs.oracle.com/cd/E17904_01/web.1111/e13712/web_xml.htm#WBAPP537 -->
+
   <display-name>Archetype Created Web Application</display-name>
+
+  <!-- Web Application Context 配置 begin -->
+  <listener>
+    <!-- Web容器启动时自动装配ApplicationContext配置信息，如果在web.xml中不写任何参数配置信息，默认的路径是/WEB-INF/applicationContext.xml，
+        在WEB-INF目录下创建的xml文件的名称必须是applicationContext.xml；applicationContext.xml中配置的bean会在web容器启动时加载 -->
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <!-- 通过<context-param>修改applicationContext.xml存放路径 begin -->
+  <!-- applicationContext.xml 配置 Web Application Context 拓展功能组件  -->
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:applicationContext.xml</param-value>
+  </context-param>
+  <!-- 通过<context-param>修改applicationContext.xml存放路径 end -->
+  <!-- Web Application Context 装配配置 end -->
+
+  <!--引入映射xml文件 begin-->
+  <servlet>
+    <servlet-name>emall</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>emall</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  <!--引入映射xml文件 end-->
 </web-app>
