@@ -31,8 +31,8 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>emall</servlet-name>
-    <!--<url-pattern>*.do</url-pattern>-->   <!-- 使用swagger这里一定不能这么写，否则找不到静态资源 swagger-ui.html -->
-    <url-pattern>/</url-pattern>
+    <!--<url-pattern>*.do</url-pattern>-->  <!-- 只拦截以.do结尾的请求, 老版本mvc对静态资源处理不好，让对静态资源的访问直接通过 -->
+    <url-pattern>/</url-pattern>    <!-- 拦截所有请求，包括对静态资源的请求 -->
   </servlet-mapping>
   <!--引入映射xml文件 end-->
 </web-app>
