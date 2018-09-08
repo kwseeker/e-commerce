@@ -2,22 +2,29 @@ package top.kwseeker.emall.pojo;
 
 import java.util.Date;
 
-/**
- * 收货信息
- */
 public class Shipping {
+    private Integer id;
 
-    private Integer id;             //收货信息id
-    private Integer userId;         //用户id
-    private String receiverName;    //收货名
-    private String receiverPhone;   //电话
-    private String receiverMobile;  //手机号码
-    private String receiverProvince; //
-    private String receiverCity;    //
-    private String receiverDistrict;//
-    private String receiverAddress; //
-    private String receiverZip;     //
+    private Integer userId;
+
+    private String receiverName;
+
+    private String receiverPhone;
+
+    private String receiverMobile;
+
+    private String receiverProvince;
+
+    private String receiverCity;
+
+    private String receiverDistrict;
+
+    private String receiverAddress;
+
+    private String receiverZip;
+
     private Date createTime;
+
     private Date updateTime;
 
     public Shipping(Integer id, Integer userId, String receiverName, String receiverPhone, String receiverMobile, String receiverProvince, String receiverCity, String receiverDistrict, String receiverAddress, String receiverZip, Date createTime, Date updateTime) {
