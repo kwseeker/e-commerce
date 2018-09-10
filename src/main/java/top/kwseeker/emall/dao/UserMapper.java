@@ -1,5 +1,6 @@
 package top.kwseeker.emall.dao;
 
+import org.apache.ibatis.annotations.Param;
 import top.kwseeker.emall.pojo.User;
 
 public interface UserMapper {
@@ -14,4 +15,26 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    //自定义接口
+    int checkUsername(String username);
+
+    int checkEmail(String email);
+
+    User selectLogin(@Param("username") String username, @Param("password")String password);
+
+    String selectQuestionByUsername(String username);
+
+    int checkAnswer(@Param("username") String username,
+                    @Param("question") String question,
+                    @Param("answer") String answer);
+
+    int updatePasswordByUsername(@Param("username") String username,
+                                 @Param("passwordNew")String passwordNew);
+
+    int checkPassword(@Param("password") String password,
+                      @Param("userId")Integer userId);
+
+    int checkEmailByUserId(@Param("email")String email,
+                           @Param("userId")Integer userId);
 }
