@@ -2,6 +2,7 @@ package top.kwseeker.emall.service.impl;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import top.kwseeker.emall.common.Const;
 import top.kwseeker.emall.common.ServerResponse;
 import top.kwseeker.emall.common.TokenCache;
@@ -12,6 +13,7 @@ import top.kwseeker.emall.util.MD5Util;
 
 import java.util.UUID;
 
+@Service
 public class UserServiceImpl implements IUserService {
 
     @Autowired
@@ -81,7 +83,7 @@ public class UserServiceImpl implements IUserService {
         return ServerResponse.createBySuccessMessage("校验成功");
     }
 
-    public ServerResponse selectQuestion(String username){
+    public ServerResponse<String> selectQuestion(String username){
 
         ServerResponse validResponse = this.checkValid(username,Const.USERNAME);
         if(validResponse.isSuccess()){
@@ -150,7 +152,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     /**
-     * 用户名和密码都必须仍保持唯一
+     * 用户名和邮箱都必须仍保持唯一
      */
     public ServerResponse<User> updateInformation(User user){
         //username是不能被更新的
