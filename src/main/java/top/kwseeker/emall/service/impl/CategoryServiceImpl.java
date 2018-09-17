@@ -3,7 +3,7 @@ package top.kwseeker.emall.service.impl;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,7 +81,7 @@ public class CategoryServiceImpl implements ICategoryService {
         }
         return ServerResponse.createBySuccess(categoryIdList);
     }
-    
+
     //递归算法,算出子节点
     private Set<Category> findChildCategory(Set<Category> categorySet ,Integer categoryId){
         Category category = categoryMapper.selectByPrimaryKey(categoryId);

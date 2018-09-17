@@ -3,7 +3,7 @@ package top.kwseeker.emall.controller.manage;
 import com.google.common.collect.Maps;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -141,18 +141,21 @@ public class ProductManageController {
 
 
     //文件上传至ftp服务器
-    @RequestMapping("upload")
-    public ServerResponse upload(HttpSession session,@RequestParam(value = "upload_file",required = false) MultipartFile file,HttpServletRequest request){
+    @PostMapping("upload")
+    public ServerResponse upload(HttpSession session,
+                                 @RequestParam(value = "upload_file",required = false) MultipartFile file,
+                                 HttpServletRequest request){
+
         User user = (User)session.getAttribute(Const.CURRENT_USER);
         if(user == null){
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),"用户未登录,请登录管理员");
         }
         if(iUserService.checkAdminRole(user).isSuccess()){
-
+            //文件上传
             String path = request.getSession().getServletContext().getRealPath("upload");
             String targetFileName = iFileService.upload(file, path);
+            //加入缓存
             String url = PropertiesUtil.getProperty("ftp.server.http.prefix")+targetFileName;
-
             Map fileMap = Maps.newHashMap();
             fileMap.put("uri",targetFileName);
             fileMap.put("url",url);
@@ -162,8 +165,11 @@ public class ProductManageController {
         }
     }
 
-    @RequestMapping("richtext_img_upload")
-    public Map richtextImgUpload(HttpSession session, @RequestParam(value = "upload_file",required = false) MultipartFile file, HttpServletRequest request, HttpServletResponse response){
+    @PostMapping("richtext_img_upload")
+    public Map richtextImgUpload(HttpSession session,
+                                 @RequestParam(value = "upload_file",required = false) MultipartFile file,
+                                 HttpServletRequest request, HttpServletResponse response){
+
         Map resultMap = Maps.newHashMap();
         User user = (User)session.getAttribute(Const.CURRENT_USER);
         if(user == null){

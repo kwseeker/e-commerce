@@ -1,6 +1,6 @@
 package top.kwseeker.emall.service.impl;
 
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import top.kwseeker.emall.common.Const;
@@ -63,7 +63,7 @@ public class UserServiceImpl implements IUserService {
      * 校验用户名或邮箱是否存在
      */
     public ServerResponse<String> checkValid(String str,String type){
-        if(org.apache.commons.lang3.StringUtils.isNotBlank(type)){
+        if(StringUtils.isNotBlank(type)){
             //开始校验
             if(Const.USERNAME.equals(type)){
                 int resultCount = userMapper.checkUsername(str);
